@@ -16,10 +16,12 @@ Turbo LoRA is **not** downloaded yet. Speed for now is Comfy Kitchen Attention (
     vae/                  # video VAE + audio VAE (shared)
     loras/
     embeddings/
-  loras/
+  loras/                  # test LoRAs (Phase C): copy from laptop + Civitai/source sidecars
   inputs/                 # stills / ref packs the client can address by path
   outputs/
 ```
+
+Phase C also copies a few **test LoRAs from the laptop** into `loras/` (not a Hub `hf download`). Keep the Civitai/source provenance next to each file (`.civitai.info` / Manager JSON, trained words, published SHA256). Do not bake LoRAs into the Docker image.
 
 ## This worker — download this one extra file
 

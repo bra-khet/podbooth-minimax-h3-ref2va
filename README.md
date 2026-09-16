@@ -36,6 +36,8 @@ RunPod Serverless worker (GPU)
 
 ## Do not download H3 weights into the image
 
+Current Hub tag (never `:latest`): `brakhet/podbooth-minimax-h3-ref2va:v0.1.0-r2v-cu128`.
+
 The Docker image only contains:
 
 - CUDA **12.8** + PyTorch (`runpod/pytorch:1.2.0-cu1281-torch280-ubuntu2404`) + ComfyUI **v0.35.2**
@@ -93,6 +95,16 @@ result = client.create_video_r2v(
 )
 client.save_video_result(result, "outputs/r2v.mp4")
 ```
+
+## Build notes
+
+Windows can author this repo. The CUDA image is `linux/amd64` (Docker Desktop). Do not pull H3 checkpoints onto the workstation.
+
+```bash
+docker build --platform linux/amd64 -t brakhet/podbooth-minimax-h3-ref2va:v0.1.0-r2v-cu128 .
+```
+
+Do not add `wget` lines for H3 checkpoints or LoRAs.
 
 ## License / credits
 
