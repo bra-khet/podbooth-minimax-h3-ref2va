@@ -1,0 +1,59 @@
+# PodBooth MiniMax H3 Ref2VA (RunPod worker) — local development and sensitive ignores
+
+# Operator handoff (volume IDs, endpoint IDs, region). Keep infra out of the public repo.
+*-progress.md
+
+# RunPod local dev data (often contains keys, job history, etc.)
+.runpod/*
+!.runpod/hub.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Logs and outputs from local testing
+*.log
+logs/
+outputs/
+test_outputs/
+
+# Environment and secrets
+.env
+*.key
+*secret*
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Any personal model paths or local ComfyUI custom tweaks not meant for the public image
+extra_personal_models/
+
+# Temporary download/cache during builds
+tmp/
+cache/
+
+# Required global ignores
+.env*
+.venv*
+*.log
+node_modules/
+dist/
+build/
+coverage/
+.claude/settings.local.json

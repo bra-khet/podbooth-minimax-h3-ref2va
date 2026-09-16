@@ -1,0 +1,164 @@
+{
+  "6": {
+    "inputs": {
+      "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Ref2VA Diffusion Model"
+    }
+  },
+  "13": {
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load MiniMax CLIP"
+    }
+  },
+  "11": {
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Video VAE"
+    }
+  },
+  "24": {
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Audio VAE"
+    }
+  },
+  "50": {
+    "inputs": {
+      "model": ["6", 0],
+      "attention": "comfy kitchen attention"
+    },
+    "class_type": "ModelAttentionBackend",
+    "_meta": {
+      "title": "Kitchen Attention"
+    }
+  },
+  "136": {
+    "inputs": {
+      "clip": ["13", 0],
+      "vae": ["11", 0],
+      "audio_vae": ["24", 0],
+      "prompt": "subject_definitions:\n<Subject 1> is the person matching <Picture 1>.\n\nsummary:\n[reference generation] A short shot of <Subject 1>.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - identity from <Picture 1>.\n\ndetailed_description:\nLive-action, cinematic.\n[Shot 1] <Subject 1> from <Picture 1> holds a still pose. The camera holds a static shot.\n\noverall_soundscape:\nQuiet room tone.\n\nnon_diegetic_music:\nN/A",
+      "width": 1344,
+      "height": 768,
+      "length": 124,
+      "ref_image_size": "match"
+    },
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "_meta": {
+      "title": "MiniMax H3 Reference to Video"
+    }
+  },
+  "15": {
+    "inputs": {
+      "noise_seed": 42
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "Random Noise"
+    }
+  },
+  "17": {
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "Sampler"
+    }
+  },
+  "9": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 20,
+      "denoise": 1,
+      "model": ["50", 0]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "Scheduler"
+    }
+  },
+  "16": {
+    "inputs": {
+      "model": ["50", 0],
+      "conditioning": ["136", 0]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "Guider"
+    }
+  },
+  "14": {
+    "inputs": {
+      "noise": ["15", 0],
+      "guider": ["16", 0],
+      "sampler": ["17", 0],
+      "sigmas": ["9", 0],
+      "latent_image": ["136", 1]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "Sampler Custom Advanced"
+    }
+  },
+  "10": {
+    "inputs": {
+      "samples": ["14", 0],
+      "vae": ["11", 0]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode Video"
+    }
+  },
+  "23": {
+    "inputs": {
+      "samples": ["14", 0],
+      "vae": ["24", 0]
+    },
+    "class_type": "VAEDecodeAudio",
+    "_meta": {
+      "title": "VAE Decode Audio"
+    }
+  },
+  "91": {
+    "inputs": {
+      "images": ["10", 0],
+      "audio": ["23", 0],
+      "fps": 24,
+      "bit_depth": 8
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "Create Video"
+    }
+  },
+  "92": {
+    "inputs": {
+      "video": ["91", 0],
+      "filename_prefix": "video/PodBooth_H3_Ref2VA",
+      "format": "auto",
+      "codec": "auto"
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "Save Video"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# ComfyUI extra model roots for the PodBooth MiniMax H3 Ref2VA serverless worker.
+# Sibling of the I2V worker: same volume layout, same mount, different DiT filename.
+# Network volume is mounted at /runpod-volume on RunPod Serverless (not /workspace).
+
+comfyui:
+    base_path: /ComfyUI/
+    is_default: true
+    checkpoints: models/checkpoints/
+    clip: models/clip/
+    clip_vision: models/clip_vision/
+    configs: models/configs/
+    controlnet: models/controlnet/
+    diffusion_models: |
+        models/diffusion_models
+        models/unet
+        /runpod-volume/models/diffusion_models
+        /runpod-volume/models/
+    text_encoders: |
+        models/text_encoders
+        /runpod-volume/models/text_encoders
+    loras: |
+        models/loras/
+        /runpod-volume/loras/
+        /runpod-volume/models/loras/
+    vae: |
+        models/vae
+        /runpod-volume/models/vae
+    audio_encoders: |
+        models/audio_encoders
+        /runpod-volume/models/audio_encoders
+    embeddings: |
+        models/embeddings
+        /runpod-volume/models/embeddings

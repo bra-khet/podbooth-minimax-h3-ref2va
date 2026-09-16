@@ -1,0 +1,17 @@
+{
+  "title": "PodBooth MiniMax H3 Ref2VA",
+  "description": "RunPod Serverless worker for MiniMax Hailuo H3 reference-to-video (Ref2VA). Up to 9 images / 3 videos / 3 audio / 12 mixed. Native stereo audio. Sibling of the I2V/FL2VA worker — same Japan volume, different DiT. Weights live on a network volume. Pin the endpoint to AP-JP-1.",
+  "type": "serverless",
+  "category": "video",
+  "iconUrl": "",
+
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 60,
+    "gpuCount": 1,
+    "gpuIds": "ADA_80_PRO",
+    "allowedCudaVersions": [
+      "12.8"
+    ]
+  }
+}
