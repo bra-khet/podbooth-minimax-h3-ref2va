@@ -1,9 +1,9 @@
 # TODO
 
-## Phase C (volume, after the image is on Hub)
+## Phase C (done)
 
-- [ ] Download Ref2VA INT8 onto `pd2no1miqa` from an AP-JP-1 pod (`scripts/provision-volume.sh`). Confirm I2V files still present. Terminate the pod.
-- [ ] Copy **test LoRAs from the laptop** into `/runpod-volume/loras/` with Civitai/source provenance (`.civitai.info` / Manager JSON + SHA256 from the published version — not a naked `.safetensors`). Operator picks files at the start of that sprint. Do not bake LoRAs into the Docker image.
+- [x] Download Ref2VA INT8 onto `pd2no1miqa` from an AP-JP-1 pod (`scripts/provision-volume.sh`). Confirm I2V files still present. Terminate the pod.
+- [x] Copy **test LoRAs from the laptop** into `/runpod-volume/loras/` with Civitai/source provenance (`.civitai.info` / Manager JSON + SHA256 from the published version — not a naked `.safetensors`). Operator picks files at the start of that sprint. Do not bake LoRAs into the Docker image.
 
 ## Later (not v1)
 

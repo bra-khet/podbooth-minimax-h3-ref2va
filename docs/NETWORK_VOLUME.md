@@ -21,7 +21,12 @@ Turbo LoRA is **not** downloaded yet. Speed for now is Comfy Kitchen Attention (
   outputs/
 ```
 
-Phase C also copies a few **test LoRAs from the laptop** into `loras/` (not a Hub `hf download`). Keep the Civitai/source provenance next to each file (`.civitai.info` / Manager JSON, trained words, published SHA256). Do not bake LoRAs into the Docker image.
+Phase C copies **test LoRAs from the laptop** into `loras/` (not a Hub `hf download`). Keep the Civitai/source provenance next to each file (`.civitai.info` / Manager JSON, trained words, published SHA256). Do not bake LoRAs into the Docker image.
+
+| File | Civitai | Trigger | SHA256 (published) |
+|---|---|---|---|
+| `zero-two-dance-mh3-e20-az420.safetensors` | [1819613 @ 3264304](https://civitai.com/models/1819613?modelVersionId=3264304) | `doing the zero-two dance` | `814D8C1E8897FF87FEE47E5DBB36D4518FBFD38A052952ACF37144D3565A15BB` |
+| `NSFW_ANIME_V7_H3-step00019500.safetensors` | [2861135 @ 3286171](https://civitai.com/models/2861135?modelVersionId=3286171) (primary 19.5k) | `2d anime style` | `C69A8E719B6784A8E475004CD47D34D1DDEFBB5DAA2D7670632CD3B459490B8D` |
 
 ## This worker — download this one extra file
 
