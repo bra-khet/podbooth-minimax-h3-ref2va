@@ -8,7 +8,7 @@ Architecture is still the Wan-booth clone:
 
 ```
 local machine
-  parent h3_ref2va_gui.py (run-ref2va.ps1 :7865)   # daily driver, later sprint
+  parent h3_ref2va_gui.py (run-ref2va.ps1 :7865)   # daily driver
     ──►  RunPod /v2/{id}/run
 sidecar booth_ui.py is a convenience panel on :7867, not the daily driver.
 
