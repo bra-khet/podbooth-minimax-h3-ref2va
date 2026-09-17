@@ -27,7 +27,7 @@ RunPod Serverless worker (GPU)
 - Path / URL / Base64 per slot. Prefer `/runpod-volume/…` — RunPod `/run` is **10 MB**
 - Videos are demuxed with native `GetVideoComponents` (IMAGE frames + optional soundtrack)
 - Flat LoRA list (not Wan high/low). Turbo LoRA is **not** provisioned yet
-- **Comfy Kitchen Attention** (`--use-ck-attention` + `ModelAttentionBackend`) for ~30% step speedup with no quality LoRA
+- **Comfy Kitchen Attention** (`--use-ck-attention` + `ModelAttentionBackend`) for ~30% step speedup with no quality LoRA. **Off on the live CUDA 12.8 AP-JP-1 endpoint** — Kitchen INT8 kernels need cu130; see `docs/KITCHEN_ATTENTION.md`.
 - Native stereo audio; `disable_audio` to drop it
 - Duration in **seconds** `{5, 10, 15}` at 24 fps, 17k+5 frame grid
 - Canvas snapped to a multiple of **32**. Official default **1344×768**

@@ -55,7 +55,7 @@ Each ref item is one of `{path|url|base64}` (a bare string is treated as a path 
 | `duration` | `5` | `{5,10,15}` → length 124 / 243 / 362. |
 | `steps` | `20` | Official non-turbo. 4 if you later attach the Ref2V turbo LoRA. |
 | `ref_image_size` | `match` | `match` scales refs down to canvas. `max` keeps 2048 short edge (slower, better identity). |
-| `use_kitchen_attention` | `true` | Strip `ModelAttentionBackend` if false. CLI still has `--use-ck-attention`. |
+| `use_kitchen_attention` | `true` | Strip `ModelAttentionBackend` if false. CLI still has `--use-ck-attention` unless `COMFY_EXTRA_ARGS` overrides it. **Live AP-JP-1 CUDA 12.8 proof used `false`.** |
 | `loras` | `[]` | Flat `{name, strength}`. Not Wan pairs. |
 | `disable_audio` | `false` | Drops CreateVideo audio input. |
 | `cfg` | ignored | `BasicGuider`. |

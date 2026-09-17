@@ -29,3 +29,13 @@ Pass it in `loras`. Do not mix the two files across workers.
 ## Override
 
 Set `COMFY_EXTRA_ARGS=--disable-auto-launch` on the endpoint if a card cannot load the kernels. Job key `use_kitchen_attention: false` strips the graph node only; the CLI flag still applies unless you override `COMFY_EXTRA_ARGS`.
+
+# CHANGED: live AP-JP-1 CUDA 12.8 hosts cannot run Kitchen INT8
+# WHY: Phase D proof on NVIDIA H100 80GB HBM3 failed in
+# `_attention_comfy_kitchen_int8_containers` → `prequantize_int8_attention`
+# → `detect_k_anchor` with "CUDA driver version is insufficient for CUDA
+# runtime version". Comfy logs "need pytorch with cu130". The I2V sibling
+# (pytorch attention, no Kitchen) already proved INT8 DiT on this same pool.
+# The live Ref2VA endpoint therefore sets `COMFY_EXTRA_ARGS=--disable-auto-launch`
+# and proof jobs send `use_kitchen_attention: false`. Re-enable Kitchen only
+# on a CUDA 13 host (or after a cu130 image bump).
